@@ -73,10 +73,9 @@ async def chat(query: ChatRequest):
 
     response = openai.ChatCompletion.create(
         model="gpt-4",
-        messages=messages
+        messages=[{"role": "user", "content": question}]
     )
-    
-    bot_response = response['choices'][0]['message']['content']
+    return {"response": response.choices[0].message["content"]}
 
     # 儲存對話
     user_sessions[user_id].append({"role": "user", "content": question})

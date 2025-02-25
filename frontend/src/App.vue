@@ -33,7 +33,7 @@ const askChatbot = async () => {
   chatHistory.value.push({ role: "user", message: userMessage.value });
 
   try {
-    const res = await axios.post(`${apiBaseUrl}/chat`, {
+    const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/chat`, {
       user_id: userId,
       message: userMessage.value
     });
